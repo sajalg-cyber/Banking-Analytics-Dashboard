@@ -1,0 +1,9 @@
+"KPI","Description","Visual","DAX / Calculated Column Example"
+"Transactions by Type","Volume or proportion of transactions by type (Credit/Debit)","Pie Chart / Stacked Column","Axis: TransactionType, Values: COUNT(CombinedBankingDataset[TransactionID])"
+"Monthly Transaction Amount","Total transaction value grouped by month","Line or Area Chart","Monthly Transaction Amount = CALCULATE(SUM(CombinedBankingDataset[Amount]), ALLEXCEPT(CombinedBankingDataset, CombinedBankingDataset[TransactionDate].[Month]))"
+"Top N Customers by Transaction Value","Customers with the highest transaction values","Top N Bar Chart","Use Top N filter:
+Axis: Customer Name or ID
+Values:Total by Customer = CALCULATE(SUM(CombinedBankingDataset[Amount]), ALLEXCEPT(CombinedBankingDataset, CombinedBankingDataset[CustomerID]))"
+"Average Account Balance","Mean balance per account","Column Chart / Gauge","Average Balance = AVERAGE(CombinedBankingDataset[Balance])"
+"Total Balance by Account Type","Aggregate balances per account type","Clustered Bar / Column","Axis: AccountType, Values:Total Balance = SUM(CombinedBankingDataset[Balance])"
+"Inactive Accounts (last 90 days)","Accounts with no transactions within the past 90 days","Clustered Bar / Table","Inactive Accounts = CALCULATE(DISTINCTCOUNT(CombinedBankingDataset[Account_AccountID]), FILTER(VALUES(CombinedBankingDataset[Account_AccountID]), CALCULATE(MAX(CombinedBankingDataset[TransactionDate])) < TODAY()-90))"
