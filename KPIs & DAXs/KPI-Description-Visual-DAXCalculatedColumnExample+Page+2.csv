@@ -1,0 +1,9 @@
+KPI,Description,Visual,DAX / Calculated Column Example
+Customer Gender Distribution,Proportion of customers by gender,Donut Chart / Stacked Column,"Customer Count by Gender = DISTINCTCOUNT(CombinedBankingDataset[CustomerID])
+Axis: Gender, Values: Customer Count by Gender"
+Customers by Age Group,Distribution of customers grouped by age brackets,Column Chart / Histogram,"Customer Age = DATEDIFF(CombinedBankingDataset[DateOfBirth], TODAY(), YEAR)
+Customer Age Group = SWITCH(TRUE(), [Customer Age]<=25, ""≤25"", [Customer Age]<=35, ""26-35"", [Customer Age]<=50,""36-50"",""51+"")"
+Accounts by Account Type,Number of accounts per account type,Clustered Bar / Treemap,"Account Count by Type = COUNT(CombinedBankingDataset[Account_AccountID])
+Axis: AccountType, Values: Account Count by Type"
+Transaction Volume Trend,Trend of transactions over time (monthly),Line or Area Chart,"Transactions by Month = CALCULATE(COUNT(CombinedBankingDataset[TransactionID]), ALLEXCEPT(CombinedBankingDataset, CombinedBankingDataset[TransactionDate].[Month]))"
+Customer Location Distribution,Customer distribution across geographic locations,Filled Map / Column Chart,"Axis: City or Region or Address, Values: DISTINCTCOUNT(CombinedBankingDataset[CustomerID])"
